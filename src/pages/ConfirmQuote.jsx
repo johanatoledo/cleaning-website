@@ -190,7 +190,7 @@ export default function ConfirmQuote() {
                                     <div className="row">
                                         <div className="col-md-4">
                                             <small className="text-muted">Name</small>
-                                            <p className="mb-0 fw-bold">{quote.customer_name}</p>
+                                            <p className="mb-0 fw-bold">{quote.customer_name || quote.customerName}</p>
                                         </div>
                                         <div className="col-md-4">
                                             <small className="text-muted">Email</small>

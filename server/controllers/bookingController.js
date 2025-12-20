@@ -127,10 +127,17 @@ export async function submitQuote(req, res) {
             if (existingCustomer.length > 0) {
                 customerId = existingCustomer[0].id;
                 
-                await connection.query(
-                    'UPDATE customers SET phone = ? WHERE id = ?',
-                    [customer.phone, customerId]
-                );
+                //await connection.query(
+                  //  'UPDATE customers SET phone = ? WHERE id = ?',
+                   // [customer.phone, customerId]
+                //);
+                // ACTUALIZACIÓN: Ahora actualizamos nombre Y teléfono 
+                // para que coincida con lo que el usuario escribió hoy solo pruebas luego borrar y dejar
+                //la de arriba si se quiere solo actualizar telefono
+                 await connection.query(
+                'UPDATE customers SET name = ?, phone = ? WHERE id = ?',
+                 [customer.name, customer.phone, customerId]
+    );
             } else {
                 
                 const [result] = await connection.query(
@@ -269,9 +276,12 @@ export async function confirmQuote(req, res) {
             await connection.beginTransaction();
 
             // 1. Obtener la cotización
-            const [quotes] = await connection.query(
-                'SELECT * FROM quotes WHERE quote_id = ?',
-                [quoteId]
+           const [quotes] = await connection.query(
+             `SELECT q.*, c.name as customer_name, c.phone, c.email 
+              FROM quotes q
+              INNER JOIN customers c ON q.customer_id = c.id
+              WHERE q.quote_id = ?`,
+             [quoteId]
             );
 
             if (quotes.length === 0) {

@@ -48,7 +48,7 @@ export async function sendQuoteEmail(recipientEmail, quoteData) {
                         <h1>Your Cleaning Service Quote</h1>
                     </div>
 
-                    <p>Hello ${quoteData.customerName},</p>
+                    <p>Hello ${quoteData.customerName || quoteData.customer_name},</p>
 
                     <p>Thank you for requesting a quote! Here are your service details:</p>
 
@@ -150,7 +150,7 @@ export async function sendConfirmationEmail(recipientEmail, bookingData) {
                         <h1>Service Confirmed! ✓</h1>
                     </div>
 
-                    <p>Hello ${bookingData.customerName},</p>
+                    <p>Hello ${bookingData.customerName || bookingData.customer_name},</p>
 
                     <p>Great news! Your cleaning service has been confirmed and added to our system.</p>
 
@@ -215,13 +215,13 @@ export const sendAdminNotification = async (bookingData) => {
         html: `
             <div style="font-family: sans-serif; border: 1px solid #ddd; padding: 20px;">
                 <h2 style="color: #2c3e50;">New Cleaning Service Confirmed</h2>
-                <p><strong>Customer:</strong> ${bookingData.customer_name}</p>
-                <p><strong>Phone:</strong> ${bookingData.phone}</p>
+                <p><strong>Customer:</strong> ${bookingData.customer_name || bookingData.name || 'Not provided'}</p>
+                <p><strong>Phone:</strong> ${bookingData.phone || 'Not provided'}</p>
                 <hr />
                 <p><strong>Service:</strong> ${bookingData.service_code}</p>
                 <p><strong>Date:</strong> ${new Date(bookingData.service_date).toLocaleDateString()}</p>
                 <p><strong>Time:</strong> ${bookingData.service_time}</p>
-                <p><strong>Address:</strong> ${bookingData.address}, ${bookingData.zip}</p>
+                <p><strong>Address:</strong> ${bookingData.address}</p>
                 <p><strong>Details:</strong> ${bookingData.beds} Beds, ${bookingData.baths} Baths</p>
                 <p><strong>Frequency:</strong> ${bookingData.frequency}</p>
                 <hr />

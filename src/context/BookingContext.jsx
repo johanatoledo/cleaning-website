@@ -174,7 +174,7 @@ export const BookingProvider = ({ children }) => {
         uiMessage,
         fetchQuote,
         initialBookingState
-    }), [booking, currentStep, currentQuote, quoteLoading, uiMessage, fetchQuote]);
+    }), [booking,updateBooking, currentStep, currentQuote, quoteLoading, uiMessage, fetchQuote]);
 
     return <BookingContext.Provider value={value}>{children}</BookingContext.Provider>;
 };
