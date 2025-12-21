@@ -46,11 +46,11 @@ export default function Hero() {
                 <div className='row align-items-center g-4'>
                     
                     <div className='col-12 col-lg-6'>
-                        <span className='badge rounded-pill brand-pill mb-3'>
+                        <span className='badge rounded-pill brand-pill mb-3' style={{ background: 'rgba(187, 91, 235, 0.3)', color: 'var(--pristine-black)' }} >
                             Professional Cleaning · Fast · Guaranteed
                         </span>
                         <h1 className='display-5 fw-bold lh-tight mb-3'>
-                            Your spotless home in hours, not days
+                            Your spotless home in hours, not days!
                         </h1>
                         <p className='lead mb-4'>
                             We take care of your home with our professional cleaning services. Book now and enjoy a pristine space.
@@ -67,7 +67,7 @@ export default function Hero() {
                                 Verified staff
                             </div>
                             <div className='d-flex align-items-center gap-2'>
-                                <span className='icon-circle'>
+                                <span className='icon-circle'  style={{ background: 'rgba(187, 91, 235, 0.12)', color: 'var(--pristine-black)' }}>
                                     <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
                                         <path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'></path>
                                     </svg>

@@ -1,41 +1,65 @@
 import AdvantageCard from "./AdvantageCard";
+import  ProductsIcon  from "../assets/productosdelimpieza.png";
+import  HouseIcon from '../assets/casalimpia.png';
+import  EsterIcon from '../assets/esterilizacion.png';
 
-
-
-const UserIcon = (props) => (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 21v-2a4 4 0 0 0-3-3.87"/><path d="M4 21v-2a4 4 0 0 1 3-3.87"/><circle cx="12" cy="7" r="4"/>
-    </svg>
+const FirstIcon = (props) => (
+    <img 
+        src={HouseIcon} 
+        alt="Verified Staff"
+        {...props}
+        style={{ 
+            width: props.width || '60px', 
+            height: props.height || '60px',
+            objectFit: 'contain',
+            ...props.style 
+        }} 
+    />
 );
 
-const ChatIcon = (props) => (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1-2-2H4"/>
-    </svg>
+const  SecondIcon = (props) => (
+    <img 
+        src={ProductsIcon} 
+        alt="Verified Staff"
+        {...props}
+        style={{ 
+            width: props.width || '60px', 
+            height: props.height || '60px',
+            objectFit: 'contain',
+            ...props.style 
+        }} 
+    />
 );
 
-const EcologyIcon = (props) => (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.13-3.36L23 9M1 15l5.36 3.36A9 9 0 0 0 20.49 15"/>
-    </svg>
+const  ThirdIcon = (props) => (
+    <img 
+        src={EsterIcon} 
+        alt="Verified Staff"
+        {...props}
+        style={{ 
+            width: props.width || '60px', 
+            height: props.height || '60px',
+            objectFit: 'contain',
+            ...props.style 
+        }} 
+    />
 );
-
 
 const advantages = [
     {
-        Icon: UserIcon,
-        title:"Verified staff",
-        description:"Background checks and ongoing training."
-    },
-     {
-        Icon: ChatIcon,
+        Icon: FirstIcon,
         title:"Satisfaction Guarantes",
         description:"Not satisfied? We'll do it again free of charge."
     },
      {
-        Icon: EcologyIcon,
+        Icon: SecondIcon,
         title:"Ecological products",
         description:"We take care of your home and the planet."
+    },
+     {
+        Icon: ThirdIcon,
+        title: "Deep Sterilization of Bathrooms",
+        description: "Hospital-grade disinfection to ensure a germ-free environment for your family."
     }
 ];
 
@@ -46,7 +70,7 @@ export default function AdvantagesSection() {
                 <div className="row text-center mb-4">
                     <h2 className="fw-bold">Why choose us?</h2>
                 </div>
-                <div className=" row g-3 g-lg-4">
+                <div className=" row g-3 g-lg-4" >
                     
                    {advantages.map((item, index) => (
                      <AdvantageCard
@@ -54,6 +78,7 @@ export default function AdvantagesSection() {
                       Icon={item.Icon}
                       title={item.title}
                       description={item.description}
+                    
                       />
                    ))}
                 </div>

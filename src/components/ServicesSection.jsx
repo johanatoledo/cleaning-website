@@ -71,10 +71,10 @@ export default function ServicesSection() {
                 <h2 className='text-center mb-4' style={{ color: 'var(--pristine-magenta) !important' }}>
                     Cleaning services
                 </h2>
-                <div className='row g-4'>
+                <div className='row g-4 '>
                     {services.map((service) => (
                         <div className='col-md-4' key={service.id}>
-                            <div className='card h-100 shadow-lg'>
+                            <div className='card h-100 advantage-card'>
                                 <img src={service.image} className='card-img-top' alt={service.alt} />
                                 <div className='card-body'>
                                     <h5 className='card-title'>{service.title}</h5>

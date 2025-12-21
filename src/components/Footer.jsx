@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <footer className="bg-dark text-light py-4">
             <div className="container text-center">
-                <p>© {currentYear} Pristine Homes. All rights reserved.</p>
+                <p>  Creado por ToledanaDev   {currentYear}</p>
             
             </div>
         </footer>

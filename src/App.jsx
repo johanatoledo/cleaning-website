@@ -15,7 +15,7 @@ export default function App() {
     <AuthProvider>
       <BookingProvider>
          <Header />
-        <main style={{ paddingTop: '7rem'}}>
+        <main style={{ paddingTop: '4rem'}}>
        <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/booking' element={<Booking />} />

@@ -77,6 +77,7 @@ export default function TestimonialsSection() {
                                                 className='testimonial-photo mb-3'
                                                 src={testimonial.image}
                                                 alt={testimonial.name}
+                                                style={{ width: '120px', height: '120px' }}
                                             />
                                             <p className='lead mb-1'>{testimonial.quote}</p>
                                             <div className='text-warning mb-2'>
