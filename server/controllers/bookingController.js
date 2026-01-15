@@ -6,7 +6,6 @@ import { sendQuoteEmail, sendAdminNotification } from '../services/emailService.
 
 /**
  * POST /api/pricing/calculate
- * Solo calcula el precio en tiempo real sin guardar en la Base de Datos
  */
 export async function calculatePrice(req, res) {
     try {
@@ -25,7 +24,6 @@ export async function calculatePrice(req, res) {
             price += extras.length * 500;
         }
 
-        // Ejemplo de multiplicador por frecuencia
         const multipliers = {
             'weekly': 0.85,    // 15% descuento
             'biweekly': 0.90,  // 10% descuento
@@ -217,7 +215,7 @@ export async function getQuote(req, res) {
             return res.status(400).json({ error: 'Quote ID is required' });
         }
 
-        // Validar formato UUID
+        
         if (!quoteId.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i)) {
             return res.status(400).json({ error: 'Invalid quote ID format' });
         }
@@ -260,12 +258,12 @@ export async function confirmQuote(req, res) {
     try {
         const { quoteId } = req.params;
 
-        // Validar que quoteId no esté vacío
+        
         if (!quoteId) {
             return res.status(400).json({ error: 'Quote ID is required' });
         }
 
-        // Validar formato UUID
+        
         if (!quoteId.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i)) {
             return res.status(400).json({ error: 'Invalid quote ID format' });
         }
@@ -275,7 +273,7 @@ export async function confirmQuote(req, res) {
         try {
             await connection.beginTransaction();
 
-            // 1. Obtener la cotización
+            
            const [quotes] = await connection.query(
              `SELECT q.*, c.name as customer_name, c.phone, c.email 
               FROM quotes q
@@ -292,7 +290,7 @@ export async function confirmQuote(req, res) {
             const quote = quotes[0];
 
             // 2. Actualizar estado de la cotización a confirmada
-            // CORRECCIÓN: Usar quote.id en lugar de quote.quote_id
+            
             await connection.query(
                 'UPDATE quotes SET status = ? WHERE quote_id = ?',
                 ['confirmed', quoteId]
@@ -313,7 +311,7 @@ export async function confirmQuote(req, res) {
                 VALUES (?, ?, ?, ?, ?)`,
                 ['QUOTE_CONFIRMED', 'quotes', quote.id, JSON.stringify({ status: 'pending' }), JSON.stringify({ status: 'confirmed' })]
             );
-            // 5. ENVIAR CORREO AL STAFF (Nueva función)
+            // 5. ENVIAR CORREO AL STAFF
             await sendAdminNotification(quote);
 
             await connection.commit();

@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <footer className="bg-dark text-light py-4">
             <div className="container text-center">
-                <p>  Creado por ToledanaDev   {currentYear}</p>
+                <p>  Creado por www.ToledanaDev.com   {currentYear}</p>
             
             </div>
         </footer>

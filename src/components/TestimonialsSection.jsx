@@ -41,38 +41,30 @@ export default function TestimonialsSection() {
         return () => clearInterval(interval);
     }, []);
 
-    const handlePrev = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-        );
-    };
+   
 
-    const handleNext = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-        );
-    };
+  
 
     return (
-        <section className='py-5'>
+        <section className='py-5 bg-magenta'>
             <div className='container'>
                 <div className='row text-center mb-4'>
                     <div className='col-12'>
-                        <h2 className='fw-bold'>Happy clients</h2>
+                        <h2 className='fw-bold lyrics-black'>Happy clients</h2>
                         <p className='text-muted'>Social proof that speaks for us</p>
                     </div>
                 </div>
 
-                <div id='carouselTestimonials' className='carousel slide' data-bs-ride='carousel'>
+                <div id='carouselTestimonials' className='carousel slide ' data-bs-ride='carousel'>
                     <div className='carousel-inner'>
                         {testimonials.map((testimonial, index) => (
                             <div
                                 className={`carousel-item ${index === currentIndex ? 'active' : ''}`}
                                 key={testimonial.id}
                             >
-                                <div className='row justify-content-center'>
+                                <div className='row justify-content-center '>
                                     <div className='col-12 col-md-8'>
-                                        <div className='bg-white rounded-2xl shadow-soft p-4 p-lg-5 text-center'>
+                                        <div className='bg-magenta rounded-2xl  p-4 p-lg-5 text-center'>
                                             <img
                                                 className='testimonial-photo mb-3'
                                                 src={testimonial.image}
@@ -83,7 +75,7 @@ export default function TestimonialsSection() {
                                             <div className='text-warning mb-2'>
                                                 {'★'.repeat(testimonial.rating)}
                                             </div>
-                                            <div className='small text-muted'>
+                                            <div className='small lyrics-black'>
                                                 {testimonial.name} · {testimonial.location}
                                             </div>
                                         </div>
@@ -94,30 +86,6 @@ export default function TestimonialsSection() {
                     </div>
 
                     
-                    <button
-                        className='carousel-control-prev'
-                        type='button'
-                        data-bs-target='#carouselTestimonials'
-                        data-bs-slide='prev'
-                        onClick={handlePrev}
-                        aria-label='Anterior'
-                    >
-                        <span className='carousel-control-prev-icon' aria-hidden='true'></span>
-                        <span className='visually-hidden'>Anterior</span>
-                    </button>
-
-                
-                    <button
-                        className='carousel-control-next'
-                        type='button'
-                        data-bs-target='#carouselTestimonials'
-                        data-bs-slide='next'
-                        onClick={handleNext}
-                        aria-label='Siguiente'
-                    >
-                        <span className='carousel-control-next-icon' aria-hidden='true'></span>
-                        <span className='visually-hidden'>Siguiente</span>
-                    </button>
                 </div>
             </div>
         </section>

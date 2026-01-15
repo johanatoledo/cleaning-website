@@ -41,11 +41,7 @@ export default function Header() {
                                 </Link>
                             </li>
                         ))}
-                        <li className='nav-item ms-lg-2'>
-                            <Link className='btn btn-brand btn-custom' to='/booking'>
-                                Book now
-                            </Link>
-                        </li>
+                       
                     </ul>
                 </div>
             </div>

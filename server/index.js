@@ -17,11 +17,12 @@ app.use(session({
     secret: process.env.SESSION_SECRET || 'supersecret', 
     resave: false,
     saveUninitialized: false,
+    rolling: true,
     cookie: {
         httpOnly: true,
         secure: false, 
         sameSite: 'lax', 
-        maxAge: 1000 * 60 * 60 
+        maxAge: 1000 * 60 * 60 * 24
     }
 }));
 
@@ -36,8 +37,6 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
-
-
 app.use('/api', (req, res, next) => {
     res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     res.set('Pragma', 'no-cache');
@@ -45,21 +44,18 @@ app.use('/api', (req, res, next) => {
     res.set('Surrogate-Control', 'no-store');
     next();
 });
-
-
 app.use(generateCsrfTokenMiddleware);
 
+
 app.get('/api/csrf-token', (req, res) => {
-    const token = res.locals.csrfToken;
-    res.json({ csrfToken: token });
+    res.json({ csrfToken: res.locals.csrfToken });
 });
+
+app.use('/api/bookings', bookingRoutes);
 
 app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
-
-
-app.use('/api/bookings', bookingRoutes);
 
 
 app.use((req, res) => {
@@ -80,6 +76,5 @@ app.set('etag', false);
 app.listen(PORT, () => {
     console.log(` Server running on http://localhost:${PORT}`);
     console.log(` Frontend URL: ${process.env.FRONTEND_URL || 'http://localhost:5173'}`);
-    console.log(` Database: ${process.env.DB_NAME || 'pristine_homes_db'}`);
     console.log('¿CSRF_SECRET cargado?:', process.env.CSRF_SECRET ? 'SÍ' : 'NO');
 });

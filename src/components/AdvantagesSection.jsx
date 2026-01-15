@@ -6,7 +6,7 @@ import  EsterIcon from '../assets/esterilizacion.png';
 const FirstIcon = (props) => (
     <img 
         src={HouseIcon} 
-        alt="Verified Staff"
+        alt="Image of a clean house"
         {...props}
         style={{ 
             width: props.width || '60px', 
@@ -20,7 +20,7 @@ const FirstIcon = (props) => (
 const  SecondIcon = (props) => (
     <img 
         src={ProductsIcon} 
-        alt="Verified Staff"
+        alt="Image of cleaning products"
         {...props}
         style={{ 
             width: props.width || '60px', 
@@ -34,7 +34,7 @@ const  SecondIcon = (props) => (
 const  ThirdIcon = (props) => (
     <img 
         src={EsterIcon} 
-        alt="Verified Staff"
+        alt="Image of sterilization"
         {...props}
         style={{ 
             width: props.width || '60px', 
@@ -65,24 +65,27 @@ const advantages = [
 
 export default function AdvantagesSection() {
     return(
-        <section className="py-5 bg-white">
+        <section className="py-5 ">
             <div className="container">
                 <div className="row text-center mb-4">
-                    <h2 className="fw-bold">Why choose us?</h2>
+                    <h2 className="fw-bold  lyrics-green">Why choose us?</h2>
                 </div>
-                <div className=" row g-3 g-lg-4" >
-                    
+                <div className=" row g-3 g-lg-4 lyrics-magenta  " >
+                
                    {advantages.map((item, index) => (
                      <AdvantageCard
                       key={index}
                       Icon={item.Icon}
                       title={item.title}
                       description={item.description}
+                      
+                      
                     
                       />
                    ))}
+                   </div>
                 </div>
-            </div>
+            
         </section>
     )
 }

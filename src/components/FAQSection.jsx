@@ -28,7 +28,7 @@ export default function FAQSection(){
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-12 col-lg-9">
-                        <h2 className="fw-bold text-center mb-4">Frequently asked questions</h2>
+                        <h2 className="fw-bold text-center mb-4 lyrics-green">Frequently asked questions</h2>
                          <div className="accordion" id="faqAcc">
                             {faqData.map((item) => (
                                 <FAQItem

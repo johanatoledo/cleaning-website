@@ -68,7 +68,7 @@ export default function ServicesSection() {
     return (
         <section id='services' className='py-5'>
             <div className='container'>
-                <h2 className='text-center mb-4' style={{ color: 'var(--pristine-magenta) !important' }}>
+                <h2 className='text-center mb-4' style={{ color: 'var(--pristine-green) !important' }}>
                     Cleaning services
                 </h2>
                 <div className='row g-4 '>
@@ -77,7 +77,7 @@ export default function ServicesSection() {
                             <div className='card h-100 advantage-card'>
                                 <img src={service.image} className='card-img-top' alt={service.alt} />
                                 <div className='card-body'>
-                                    <h5 className='card-title'>{service.title}</h5>
+                                    <h5 className='card-title lyrics-green'>{service.title}</h5>
                                     <p className='card-text'>{service.description}</p>
                                     <button
                                         onClick={() => handleReserve(service.code)}

@@ -58,8 +58,9 @@ const StepSchemas = {
         uiMessage,
     } = useBooking ();
     const { isLoading: authLoading, error: authError } = useAuth();
-
+    
     const debounceTimeoutRef = useRef(null);
+
 
     useEffect(() => {
     

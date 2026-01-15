@@ -3,8 +3,28 @@
   --pristine-magenta: #e747ad;
   --pristine-black: #000000;
   --pristine-white: #ffffff;
+  --pristine-green: rgb(3, 173, 18);
+  --pristine-blue:#11bcb9;
 }
-
+.lyrics{
+  color: var(--pristine-white)!important;
+}
+.lyrics-green{
+  color: var(--pristine-green)!important;
+}
+.lyrics-black{
+  color: var(--pristine-black)!important;
+}
+.lyrics-magenta{
+  color: var(--pristine-magenta)!important;
+}
+.bg-magenta{
+  background-color: var(--pristine-magenta) !important;
+}
+.sw-card-green{
+  box-shadow: 0 4px 15px rgb(3, 173, 18,0.5)!important;
+  border:none !important;
+}
 
 body {
   font-family: Arial, sans-serif;
@@ -50,6 +70,10 @@ body {
     box-shadow: 0 10px 20px rgba(214, 51, 132, 0.2); 
    
 }
+.stepsSection{
+  background-color: var(--pristine-magenta) !important;
+  
+}
 .accordion-button:not(.collapsed) {
   color: var(--pristine-black) !important;
   background-color: rgba(231, 71, 173, 0.15)!important;
@@ -92,9 +116,7 @@ body {
   color: var(--pristine-black);
 }
 
-.shadow-soft {
-  box-shadow: 0 10px 30px rgba(2, 10, 20, .08);
-}
+
 
 .bg-white-opaco {
   background-color: rgba(255, 255, 255, 0.8);
@@ -105,8 +127,8 @@ body {
 }
 
 .icon-circle {
-  width: 48px;
-  height: 48px;
+  width: 6rem;
+  height: 6rem;
   border-radius: 9999px;
   display: inline-flex;
   align-items: center;
@@ -223,6 +245,7 @@ body {
   position: relative;
   width: 100%;
   overflow: hidden;
+  
 }
 
 .carousel-item {
@@ -230,11 +253,16 @@ body {
   position: relative;
   width: 100%;
   transition: opacity 0.6s ease-in-out;
+  
+}
+.bg-green{
+  background-color: var(--pristine-green) !important;
 }
 
 .carousel-item.active {
   display: block;
   animation: fadeIn 0.6s ease-in-out;
+
 }
 
 @keyframes fadeIn {
